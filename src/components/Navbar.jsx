@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Search} from "@mui/icons-material";
+import { useNavigate } from 'react-router-dom';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Badge from '@mui/material/Badge';
 import logo from '../assets/images/logo.png';
@@ -73,7 +74,7 @@ const Center = styled.div`
     
 `
 const Logo = styled.div `
- 
+ cursor: pointer;
   img{
     ${mobile`
       
@@ -118,6 +119,7 @@ const MenuItem = styled.div`
 `
 
 const Navbar = () => {
+  const navigate = useNavigate(); //This is a hook provided by react router dom to navigate
   return (
     <Container> {/* This is same as div className */}
       <Wrapper>
@@ -130,14 +132,14 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>
+          <Logo onClick={() => navigate("/")} >
             <img src = {logo} alt = "NamoBuddha Thangka Arts" />
           </Logo>
           </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => navigate("/register")}>REGISTER</MenuItem>
+          <MenuItem onClick={() => navigate("/login")}> SIGN IN</MenuItem>
+          <MenuItem onClick={() => navigate("/cart")}>
             <Badge badgeContent={4} color="primary">
               <ShoppingCartOutlinedIcon/>
             </Badge>

@@ -2,6 +2,7 @@ import { Facebook, Instagram, MailLockOutlined, MailOutline, Phone, Pinterest, R
 import styled from "styled-components"
 import logo from '../assets/images/logo.png';
 import { mobile } from "../responsive";
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
     display: flex;
@@ -102,6 +103,7 @@ const PaymentIcon = styled.img`
 
 
 const Footer = () => {
+    const navigate = useNavigate();
   return (
     <Container>
       <Left>
@@ -135,7 +137,7 @@ const Footer = () => {
                 <ListItem><a href="/shipping">Shipping Information</a></ListItem>
                 <ListItem><a href="/returns">Returns & Exchanges</a></ListItem>
                 <ListItem><a href="/blog">Blog</a></ListItem>
-                <ListItem><a href="/gallery">Gallery</a></ListItem>
+                <ListItem onClick={() => navigate("/productlist")}>Gallery</ListItem>
                 <ListItem><a href="/social-media">Follow Us</a></ListItem>
         </List>
       </Center>
